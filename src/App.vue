@@ -1,4 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+import { addList, taskStore } from '~/stores/taskStore'
+
+import TaskList from '~/components/TaskList.vue'
+
+const newListName = ref<string>('')
+
+function addNewList(ev: SubmitEvent) {
+  const form = ev.currentTarget as HTMLFormElement
+  addList(newListName.value)
+  newListName.value = ''
+  form.reset()
+}
+</script>
 
 <template>
   <header>
@@ -6,13 +20,16 @@
   </header>
 
   <main>
-    <input type="email" class="form-input px-4 py-3 rounded-full">
-
-<select class="form-select px-4 py-3 rounded-full">
-  <!-- ... -->
-</select>
-
-<input type="checkbox" class="form-checkbox rounded text-pink-500" />
+    <section>
+      <form @submit.prevent="addNewList" class="flex">
+        <label for="newListName">Create a new List</label>
+        <input id="newListName" v-model="newListName" required minlength="1" type="text" />
+        <button>+</button>
+      </form>
+    </section>
+    <section class="mt-10 space-y-8 max-w-5xl w-full">
+      <TaskList v-for="[key, list] in taskStore.lists" :key="key" v-bind="list" />
+    </section>
   </main>
 </template>
 
