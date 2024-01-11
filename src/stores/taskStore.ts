@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { ulid } from 'ulidx'
 import { type TaskList } from '~/components/TaskList.vue'
 import { type Task } from '~/components/Task.vue'
@@ -7,11 +7,15 @@ type TasksInLists = [taskListId: TaskList['id'], taskIds: Array<Task['id']>] | [
 export const taskStore = reactive({
   lists: new Map<TaskList['id'], TaskList>(),
   tasks: new Map<Task['id'], Task>(),
-  //   tasksInLists: new WeakMap<TaskList, { taskId: TaskList['id'] }>(),
-  //   taskSetForList: new Map<TaskList, Set<Task>>()
   tasksInLists: new Map<TaskList['id'], Set<Task['id']>>(),
   tasksInListsArray: [] as TasksInLists
 })
+
+export const taskLists = ref<Array<TaskList>>([
+  { id: '1', name: 'Inbox', tasks: [{ id: '1', label: 'test', done: true }] },
+  { id: '2', name: 'Today', tasks: [] },
+  { id: '3', name: 'Tomorrow', tasks: [] }
+])
 
 export function addList(name: TaskList['name']) {
   const id = ulid()
