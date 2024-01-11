@@ -6,8 +6,9 @@
     "composite": true,
     "noEmit": true,
     "baseUrl": ".",
+    "verbatimModuleSyntax": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "~/*": ["./src/*"]
     }
   }
 }
