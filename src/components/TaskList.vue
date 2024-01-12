@@ -88,6 +88,7 @@ function highlight(string: string) {
       type="search"
       placeholder="Search"
       v-model.trim="searchQuery"
+      @keydown.enter.prevent=""
       class="rounded-md px-2 border-2 border-neutral-500"
     />
 
