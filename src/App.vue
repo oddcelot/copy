@@ -35,7 +35,7 @@ function addNewList() {
   <main class="flex flex-col gap-10">
     <section class="flex flex-col gap-10">
       <form @submit.prevent="addNewList">
-        <fieldset class="dark:bg-slate-900 p-4 rounded-md">
+        <fieldset class="dark:bg-slate-700 p-4 rounded-md border">
           <legend>Add a list</legend>
           <div class="grid grid-cols-2 grid-row-2 gap-y-1">
             <label for="newListName" class="col-span-2">List name</label>
@@ -47,10 +47,10 @@ function addNewList() {
               required
               minlength="1"
               type="text"
-              class="rounded-s-md px-2 border-2 border-neutral-500"
+              class="rounded-s-md px-2 border-2 border-neutral-500 dark:bg-slate-800"
             />
             <button
-              class="bg-green-600 px-2 w-8 rounded-e-md border-2 border-s-0 border-neutral-500"
+              class=" px-2 w-8 rounded-e-md border-2 border-s-0 dark:bg-slate-900 border-neutral-500"
             >
               +
             </button>
@@ -58,7 +58,7 @@ function addNewList() {
         </fieldset>
       </form>
       <form @submit.prevent="addNewTask" class="flex">
-        <fieldset class="dark:bg-slate-900 p-4 rounded-md">
+        <fieldset class="dark:bg-slate-700 p-4 rounded-md border shadow-md">
           <legend>Add a task to an existing list</legend>
           <div class="grid grid-cols-4 grid-row-2 gap-y-1">
             <label for="existingLists" class="">Select from list</label>
@@ -68,7 +68,8 @@ function addNewList() {
               name="listName"
               aria-label="Task List"
               v-model="targetList"
-              class="row-start-2 rounded-s-md px-2 border-2 border-neutral-500"
+              required
+              class="row-start-2 rounded-s-md px-2 border-2 border-neutral-500 dark:bg-slate-800"
             >
               <option
                 v-for="(list, idx) in taskLists"
@@ -88,11 +89,11 @@ function addNewList() {
               required
               minlength="1"
               type="text"
-              class="row-start-2 px-2 border-2 border-s-0 border-neutral-500"
+              class="row-start-2 px-2 border-2 border-s-0 border-neutral-500 dark:bg-slate-800"
             />
 
             <button
-              class="row-start-2 bg-orange-600 px-2 w-8 rounded-e-md border-2 border-s-0 border-neutral-500"
+              class="row-start-2 dark:bg-slate-900 px-2 w-8 rounded-e-md border-2 border-s-0 border-neutral-500"
             >
               +
             </button>

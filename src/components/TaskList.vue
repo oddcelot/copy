@@ -72,7 +72,7 @@ function highlight(string: string) {
 <template>
   <form
     ref="taskListForm"
-    class="shadow-md rounded-md border p-4 dark:bg-slate-900 space-y-2"
+    class="shadow-md rounded-md border p-4 dark:bg-slate-700 space-y-2"
     @submit.prevent="addNewTask"
   >
     <legend class="flex justify-between font-bold">
@@ -86,10 +86,10 @@ function highlight(string: string) {
     </legend>
     <input
       type="search"
-      placeholder="Search"
+      placeholder="Search tasks form this list"
       v-model.trim="searchQuery"
       @keydown.enter.prevent=""
-      class="rounded-md px-2 border-2 border-neutral-500"
+      class="rounded-md px-2 border-2 border-neutral-500 dark:bg-slate-800" 
     />
 
     <div>
@@ -100,8 +100,8 @@ function highlight(string: string) {
         v-model.trim="newTaskLabel"
         name="newTaskLabel"
         type="text"
-        class="rounded-s-md px-2 border-2 border-e-0 border-neutral-500"
-      /><button class="rounded-e-md px-2 border-2 border-neutral-500">+</button>
+        class="rounded-s-md px-2 border-2 border-e-0 border-neutral-500 dark:bg-slate-800"
+      /><button class="rounded-e-md px-2 border-2 border-neutral-500 dark:bg-slate-900">+</button>
     </div>
     <span v-if="searchQuery && sorted.length === 0">Sorry, no matching tasks :(</span>
 
