@@ -23,14 +23,18 @@
   body {
     height: 100%;
   }
+
   body {
     display: flex;
     flex-direction: column;
+    place-items: center;
   }
+
   #app {
     display: grid;
     grid-template-rows: auto minmax(auto, 100vh);
     gap: 1rem;
     flex: 1;
+    width: clamp(20rem, 80vw, 50rem);
   }
 }
